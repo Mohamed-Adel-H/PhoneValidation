@@ -36,13 +36,13 @@ public class CustomerController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "3") int size,
             @RequestParam(required = false) String country,
-            @RequestParam(required = false) boolean state,
+            @RequestParam(required = false) Boolean state,
             @RequestParam(defaultValue = "id,desc") String[] sort
     ) {
         try {
             List<Order> sortOrders = controllerUtil.getSortOrders(sort);
-
             CustomerGETPayload customerPayload = new CustomerGETPayload(page, size, country, state, sortOrders);
+
             Page<Customer> pageTuts = customerService.getAllCustomer(customerPayload);
 
             List<Customer> customers = pageTuts.getContent();
